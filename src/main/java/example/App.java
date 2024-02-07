@@ -4,6 +4,7 @@ import tictactoe.TicTacToe;
 
 public class App {
     public static void main(String[] args) {
-    TicTacToe.gameStart();
+        TicTacToe ticTacToe = new TicTacToe();
+        ticTacToe.gameStart();
     }
 }

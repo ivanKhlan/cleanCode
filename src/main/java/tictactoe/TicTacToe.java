@@ -17,7 +17,7 @@ public class TicTacToe {
     private static final Scanner scan = new Scanner(System.in);
 
 
-    public static void gameStart() {
+    public void gameStart() {
         System.out.println("Enter box number to select. Enjoy!");
         while (gameComing) {
             drawPlayingField();
@@ -35,7 +35,7 @@ public class TicTacToe {
         }
     }
 
-    public static void drawPlayingField() {
+    public void drawPlayingField() {
         int counter = 1;
         for (int i = 0; i < BOX.length; i++) {
             System.out.print(BOX[i] + " | ");
@@ -47,7 +47,7 @@ public class TicTacToe {
         }
     }
 
-    public static void fillBoxes() {
+    public void fillBoxes() {
         if (!boxIsEmpty) {
             for (byte indexBox = 0; indexBox < NUMBER_OF_BOXES; indexBox++)
                 BOX[indexBox] = ' ';
@@ -55,7 +55,7 @@ public class TicTacToe {
         }
     }
 
-    public static boolean checkWinner() {
+    public boolean checkWinner() {
         return switch (winner) {
             case PLAYER -> {
                 System.out.println("You won the game!\nCreated by Shreyas Saha. Thanks for playing!");
@@ -73,7 +73,7 @@ public class TicTacToe {
         };
     }
 
-    public static void checkIfBoxFree() {
+    public void checkIfBoxFree() {
 
         while (true) {
             byte cellNumber = scan.nextByte();
@@ -90,7 +90,7 @@ public class TicTacToe {
         }
     }
 
-    public static void checkWinningCombinations(char symbol, byte identifier) {
+    public void checkWinningCombinations(char symbol, byte identifier) {
         if (horizontalLines(symbol)
                 || verticalLines(symbol)
                 || diagonalLines(symbol)) {
@@ -98,24 +98,24 @@ public class TicTacToe {
         }
     }
 
-    public static boolean horizontalLines(char symbol) {
+    public boolean horizontalLines(char symbol) {
         return (BOX[0] == symbol && BOX[1] == symbol && BOX[2] == symbol)
                 || (BOX[3] == symbol && BOX[4] == symbol && BOX[5] == symbol)
                 || (BOX[6] == symbol && BOX[7] == symbol && BOX[8] == symbol);
     }
 
-    public static boolean verticalLines(char symbol) {
+    public boolean verticalLines(char symbol) {
         return (BOX[0] == symbol && BOX[3] == symbol && BOX[6] == symbol)
                 || (BOX[1] == symbol && BOX[4] == symbol && BOX[7] == symbol)
                 || (BOX[2] == symbol && BOX[5] == symbol && BOX[8] == symbol);
     }
 
-    public static boolean diagonalLines(char symbol) {
+    public boolean diagonalLines(char symbol) {
         return (BOX[0] == symbol && BOX[4] == symbol && BOX[8] == symbol)
                 || (BOX[2] == symbol && BOX[4] == symbol && BOX[6] == symbol);
     }
 
-    public static void computerMove() {
+    public void computerMove() {
         while (true) {
             byte randomCellForComputer = (byte) (Math.random() * BOX.length + 1);
             if (BOX[randomCellForComputer - 1] != 'X' && BOX[randomCellForComputer - 1] != 'O') {
@@ -125,7 +125,7 @@ public class TicTacToe {
         }
     }
 
-    public static boolean isThisADraw() {
+    public boolean isThisADraw() {
         byte indexBox;
         boolean boxAvailable = false;
         for (indexBox = 0; indexBox < BOX.length; indexBox++) {
